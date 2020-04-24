@@ -1,9 +1,8 @@
 package com.rssignaturecapture;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.ViewGroup;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.facebook.react.uimanager.ThemedReactContext;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
@@ -67,6 +66,7 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
     this.saveFileInExtStorage = saveFileInExtStorage;
   }
 
+  @SuppressLint("SourceLockedOrientationActivity")
   public void setViewMode(String viewMode) {
     this.viewMode = viewMode;
 
@@ -139,7 +139,7 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
    */
   final void saveImage() {
 
-    String root = Environment.getExternalStorageDirectory().toString();
+    String root = this.getContext().getFilesDir().getAbsolutePath();
 
     // the directory where the signature will be saved
     File myDir = new File(root + "/saved_signature");
